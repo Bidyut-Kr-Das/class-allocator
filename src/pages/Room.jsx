@@ -1,16 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Cards from "../Components/Cards";
 import { useEffect } from "react";
-export default function Room() {
+const Room = () => {
   const params = useParams();
-  const floorNo = params.floorNo;
-
-  //   or i can destructureit as    const {floorNo} = useParams();
+  const floorNo = params.floorNo; //<-can be destructured as const {floorNo} = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    if (floorNo > 7) {
-      navigate("/admin");
-    }
+    (isNaN(floorNo) || floorNo > 7 || floorNo < 0) && navigate("/not-found");
   }, []);
 
   return (
@@ -23,4 +19,6 @@ export default function Room() {
       </div>
     </>
   );
-}
+};
+
+export default Room;
