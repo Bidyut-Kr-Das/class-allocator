@@ -1,8 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html {
+  scroll-behavior: smooth;
+}
 @font-face {
   font-family: Poppins;
   src: url("/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: BebasNeue;
+  src: url("/fonts/BebasNeue-Regular.ttf");
+}
+@font-face {
+  font-family: yikes;
+  src: url("../public/fonts/YIKES!__.TTF");
+}
+.BebasNeue {
+  font-family: BebasNeue;
+}
+.yikes {
+  font-family: yikes;
 }

@@ -44,11 +44,13 @@ const Room = () => {
 
   return (
     <>
-      <div>
-        You are checking class on Floor No :-{floorNo} room no:-{roomNo}
+      <div className="px-4 BebasNeue font-thin text-3xl my-2 ">
+        You are checking class on <br /> Floor No -{" "}
+        <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
+        <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
-      <div className="flex items-center justify-center min-h-screen  mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 gap-4">
+      <div className="flex  justify-center min-h-[26rem]  mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 gap-6">
           {classes.map((classCard, i) => {
             return (
               <Cards
