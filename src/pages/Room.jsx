@@ -45,7 +45,7 @@ const Room = () => {
   return (
     <>
       <div className="px-4 BebasNeue font-thin text-3xl my-2 ">
-        You are checking class on <br /> Floor No -{" "}
+        You are checking classes on <br /> Floor No -{" "}
         <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
         <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
