@@ -1,6 +1,21 @@
-export default function Cards() {
+export default function Cards(props) {
   const max = 5;
   const min = 0;
+  const dateObject = new Date(props.startTime);
+
+  // Extract time in 24-hour format (without seconds or milliseconds)
+  const startTime = dateObject.toLocaleTimeString("en", {
+    timeStyle: "short",
+    hour12: false,
+  });
+  const dateobject = new Date(props.endTime);
+
+  // Extract time in 24-hour format (without seconds or milliseconds)
+  const endTime = dateobject.toLocaleTimeString("en", {
+    timeStyle: "short",
+    hour12: false,
+  });
+
   const className = [
     "bg-[#f9b234]",
     "bg-[#3ecd5e]",
@@ -19,14 +34,16 @@ export default function Cards() {
           } h-32 w-32 z-0 flex absolute rounded-full top-[-75px] right-[-75px] transform group-hover:scale-[6.5] duration-300`}
         ></div>
         <div className="text-white px-4 py-6 flex flex-col gap-2 z-50 relative drop-shadow-md cursor-none select-none">
-          <div className="font-semibold text-3xl tracking-wider">BCS-3D</div>
+          <div className="font-semibold text-3xl tracking-wider">
+            {props.batch}
+          </div>
           <p className="font-poppins font-thin text-lg text-gray-400 group-hover:text-white">
-            Swarnadip Dasgupta
+            {props.teacherName}
           </p>
           <p className="pt-8">
             Class Duration:{"  "}
             <span className="text-[#f9b234] font-bold group-hover:text-white">
-              10:45 - 12:30
+              {startTime} - {endTime}
             </span>
           </p>
         </div>
