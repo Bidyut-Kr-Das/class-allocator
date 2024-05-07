@@ -49,7 +49,7 @@ const Room = () => {
         <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
         <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
-      <div className="flex  justify-center min-h-[26rem]  mx-auto">
+      <div className="flex  justify-center  mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 gap-6">
           {classes.map((classCard, i) => {
             return (

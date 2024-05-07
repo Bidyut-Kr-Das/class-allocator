@@ -27,7 +27,7 @@ export default function Cards(props) {
   return (
     <>
       {/* --------------------------------Cards-------------------------------- */}
-      <div className="group bg-black rounded-2xl shadow-lg relative overflow-hidden w-full">
+      <div className="group bg-black rounded-2xl shadow-lg relative overflow-hidden w-full h-auto">
         <div
           className={`${
             className[Math.floor(Math.random() * (max - min + 1) + min)]
