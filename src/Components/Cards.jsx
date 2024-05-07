@@ -1,20 +1,20 @@
 export default function Cards(props) {
   const max = 5;
   const min = 0;
-  const dateObject = new Date(props.startTime);
+  // const dateObject = new Date(props.startTime);
 
-  // Extract time in 24-hour format (without seconds or milliseconds)
-  const startTime = dateObject.toLocaleTimeString("en", {
-    timeStyle: "short",
-    hour12: false,
-  });
-  const dateobject = new Date(props.endTime);
+  // // Extract time in 24-hour format (without seconds or milliseconds)
+  // const startTime = dateObject.toLocaleTimeString("en", {
+  //   timeStyle: "short",
+  //   hour12: false,
+  // });
+  // const dateobject = new Date(props.endTime);
 
-  // Extract time in 24-hour format (without seconds or milliseconds)
-  const endTime = dateobject.toLocaleTimeString("en", {
-    timeStyle: "short",
-    hour12: false,
-  });
+  // // Extract time in 24-hour format (without seconds or milliseconds)
+  // const endTime = dateobject.toLocaleTimeString("en", {
+  //   timeStyle: "short",
+  //   hour12: false,
+  // });
 
   const className = [
     "bg-[#f9b234]",
@@ -43,7 +43,7 @@ export default function Cards(props) {
           <p className="pt-8 BebasNeue text-xl tracking-widest">
             Class Duration:{"  "}
             <span className="text-[#f9b234] font-bold group-hover:text-white">
-              {startTime} - {endTime}
+              {props.startTime} - {props.endTime}
             </span>
           </p>
         </div>
