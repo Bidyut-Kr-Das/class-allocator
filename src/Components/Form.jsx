@@ -15,15 +15,27 @@ const Form = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+    setForm({
+      roomNumber: "",
+      batch: "",
+      teacher: "",
+      slot: "",
+    });
+  };
+
   return (
     <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
       <div className="flex-shrink-0">
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>
             Room Number:
             <input
               type="text"
               name="roomNumber"
+              value={form.roomNumber}
               onChange={handleChange}
               className="form-input mt-1 block w-full"
               placeholder="Enter room number"
@@ -34,6 +46,7 @@ const Form = () => {
             <input
               type="text"
               name="batch"
+              value={form.batch}
               onChange={handleChange}
               className="form-input mt-1 block w-full"
               placeholder="Enter batch"
@@ -43,6 +56,7 @@ const Form = () => {
             Teacher:
             <select
               name="teacher"
+              value={form.teacher}
               onChange={handleChange}
               className="form-select mt-1 block w-full"
             >
@@ -57,6 +71,7 @@ const Form = () => {
             Slot:
             <select
               name="slot"
+              value={form.slot}
               onChange={handleChange}
               className="form-select mt-1 block w-full"
             >
@@ -67,6 +82,12 @@ const Form = () => {
               ))}
             </select>
           </label>
+          <button
+            type="submit"
+            className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>
