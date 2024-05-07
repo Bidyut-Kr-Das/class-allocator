@@ -6,10 +6,14 @@ const Form = () => {
     batch: "",
     teacher: "",
     slot: "",
+    classes: "",
   });
+
+  const [usedSlots, setUsedSlots] = useState([]);
 
   const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
   const slots = ["Slot 1", "Slot 2", "Slot 3"];
+  const classes = ["Single Class", "Double Class", "Triple Class"];
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,14 +21,34 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+
+    let startSlot = parseInt(form.slot.split(" ")[1]);
+    let endSlot = startSlot + classes.indexOf(form.classes);
+
+    let slotsArray = [];
+    for (let i = startSlot; i <= endSlot; i++) {
+      if (usedSlots.includes(i)) {
+        alert(`Slot ${i} is already used.`);
+        return;
+      }
+      slotsArray.push(i);
+    }
+
+    setUsedSlots([...usedSlots, ...slotsArray]);
+
+    let formData = { ...form, slots: slotsArray };
+    console.log(formData);
+
     setForm({
       roomNumber: "",
       batch: "",
       teacher: "",
       slot: "",
+      classes: "",
     });
   };
+
+  // Rest of your code...
 
   return (
     <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
@@ -78,6 +102,21 @@ const Form = () => {
               {slots.map((slot, index) => (
                 <option key={index} value={slot}>
                   {slot}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Classes:
+            <select
+              name="classes"
+              value={form.classes}
+              onChange={handleChange}
+              className="form-select mt-1 block w-full"
+            >
+              {classes.map((classType, index) => (
+                <option key={index} value={classType}>
+                  {classType}
                 </option>
               ))}
             </select>
