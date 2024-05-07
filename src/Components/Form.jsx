@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -9,7 +9,7 @@ const Form = () => {
     classes: "",
   });
 
-  const [usedSlots, setUsedSlots] = useState([]);
+  // const [usedSlots, setUsedSlots] = useState([]);
 
   const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
   const slots = ["Slot 1", "Slot 2", "Slot 3"];
@@ -23,18 +23,18 @@ const Form = () => {
     e.preventDefault();
 
     let startSlot = parseInt(form.slot.split(" ")[1]);
-    let endSlot = startSlot + classes.indexOf(form.classes);
 
+    let endSlot = startSlot + classes.indexOf(form.classes);
     let slotsArray = [];
     for (let i = startSlot; i <= endSlot; i++) {
-      if (usedSlots.includes(i)) {
-        alert(`Slot ${i} is already used.`);
-        return;
-      }
+      // if (usedSlots.includes(i)) {
+      //   alert(`Slot ${i} is already used.`);
+      //   return;
+      // }
       slotsArray.push(i);
     }
 
-    setUsedSlots([...usedSlots, ...slotsArray]);
+    // setUsedSlots([...usedSlots, ...slotsArray]);
 
     let formData = { ...form, slots: slotsArray };
     console.log(formData);
@@ -46,6 +46,7 @@ const Form = () => {
       slot: "",
       classes: "",
     });
+    // setUsedSlots([]);
   };
 
   // Rest of your code...
@@ -84,6 +85,7 @@ const Form = () => {
               onChange={handleChange}
               className="form-select mt-1 block w-full"
             >
+              <option value="">{"Select Teacher"}</option>
               {teachers.map((teacher, index) => (
                 <option key={index} value={teacher}>
                   {teacher}
@@ -99,6 +101,7 @@ const Form = () => {
               onChange={handleChange}
               className="form-select mt-1 block w-full"
             >
+              <option value="">{"Select Slot"}</option>
               {slots.map((slot, index) => (
                 <option key={index} value={slot}>
                   {slot}
@@ -114,6 +117,7 @@ const Form = () => {
               onChange={handleChange}
               className="form-select mt-1 block w-full"
             >
+              <option value="">{"Select no of classes"}</option>
               {classes.map((classType, index) => (
                 <option key={index} value={classType}>
                   {classType}
