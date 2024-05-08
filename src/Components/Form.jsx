@@ -111,41 +111,41 @@ const Form = () => {
   };
 
   return (
-    <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
+    <div className="p-6 max-w-sm mx-auto bg-gray-100 rounded-xl shadow-md flex items-center space-x-4">
       <div className="flex-shrink-0">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Room Number:
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <label className="block">
+            <span className="text-gray-700">Room Number:</span>
             <input
               required
               type="text"
               name="roomNumber"
               value={form.roomNumber}
               onChange={handleChange}
-              className="form-input mt-1 block w-full"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               placeholder="Enter room number"
             />
           </label>
-          <label>
-            Batch:
+          <label className="block">
+            <span className="text-gray-700">Batch:</span>
             <input
               required
               type="text"
               name="batch"
               value={form.batch}
               onChange={handleChange}
-              className="form-input mt-1 block w-full"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               placeholder="Enter batch"
             />
           </label>
-          <label>
-            Teacher:
+          <label className="block">
+            <span className="text-gray-700">Teacher:</span>
             <select
               required
               name="teacher"
               value={form.teacher}
               onChange={handleChange}
-              className="form-select mt-1 block w-full"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">{"Select Teacher"}</option>
               {teachers.map((teacher, index) => (
@@ -155,14 +155,14 @@ const Form = () => {
               ))}
             </select>
           </label>
-          <label>
-            Slot:
+          <label className="block">
+            <span className="text-gray-700">Slot:</span>
             <select
               required
               name="slot"
               value={form.slot}
               onChange={handleChange}
-              className="form-select mt-1 block w-full"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">{"Select Slot"}</option>
               {slots.map((slot, index) => (
@@ -172,14 +172,14 @@ const Form = () => {
               ))}
             </select>
           </label>
-          <label>
-            Classes:
+          <label className="block">
+            <span className="text-gray-700">Classes:</span>
             <select
               required
               name="classes"
               value={form.classes}
               onChange={handleChange}
-              className="form-select mt-1 block w-full"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">{"Select no of classes"}</option>
               {classes.map((classType, index) => (
