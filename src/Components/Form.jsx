@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 const Form = () => {
   const [form, setForm] = useState({
     roomNumber: "",
@@ -12,7 +12,17 @@ const Form = () => {
   // const [usedSlots, setUsedSlots] = useState([]);
 
   const [teachers, setTeachers] = useState([]);
-  const slots = ["Slot 1", "Slot 2", "Slot 3"];
+  const slots = [
+    "Slot 1",
+    "Slot 2",
+    "Slot 3",
+    "Slot 4",
+    "Slot 5",
+    "Slot 6",
+    "Slot 7",
+    "Slot 8", //single and double
+    "Slot 9", //only single
+  ];
   const classes = ["Single Class", "Double Class", "Triple Class"];
 
   useEffect(() => {
@@ -25,6 +35,32 @@ const Form = () => {
   }, []);
 
   const handleChange = (e) => {
+    if (e.target.name === "slot") {
+      if (e.target.value === "Slot 8" && form.classes === "Triple Class") {
+        alert("Only Single and Double classes are allowed for Slot 8");
+        return;
+      }
+      if (
+        e.target.value === "Slot 9" &&
+        (form.classes === "Double Class" || form.classes === "Triple Class")
+      ) {
+        alert("Only Single class is allowed for Slot 9");
+        return;
+      }
+    }
+    if (e.target.name === "classes") {
+      if (form.slot === "Slot 8" && e.target.value === "Triple Class") {
+        alert("Only Single and Double classes are allowed for Slot 8");
+        return;
+      }
+      if (
+        form.slot === "Slot 9" &&
+        (e.target.value === "Double Class" || e.target.value === "Triple Class")
+      ) {
+        alert("Only Single class is allowed for Slot 9");
+        return;
+      }
+    }
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -45,8 +81,24 @@ const Form = () => {
 
     // setUsedSlots([...usedSlots, ...slotsArray]);
 
-    let formData = { ...form, slots: slotsArray };
+    let formData = { ...form, slots: slotsArray, teacher: form.teacher };
     console.log(formData);
+
+    axios
+      .patch(
+        `https://class-allocator-api.up.railway.app/api/v2/classrooms/4?room=${formData.roomNumber}`,
+        {
+          batch: formData.batch,
+          teacherId: formData.teacher,
+          slots: formData.slots,
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
 
     setForm({
       roomNumber: "",
@@ -65,6 +117,7 @@ const Form = () => {
           <label>
             Room Number:
             <input
+              required
               type="text"
               name="roomNumber"
               value={form.roomNumber}
@@ -76,6 +129,7 @@ const Form = () => {
           <label>
             Batch:
             <input
+              required
               type="text"
               name="batch"
               value={form.batch}
@@ -87,6 +141,7 @@ const Form = () => {
           <label>
             Teacher:
             <select
+              required
               name="teacher"
               value={form.teacher}
               onChange={handleChange}
@@ -103,6 +158,7 @@ const Form = () => {
           <label>
             Slot:
             <select
+              required
               name="slot"
               value={form.slot}
               onChange={handleChange}
@@ -119,6 +175,7 @@ const Form = () => {
           <label>
             Classes:
             <select
+              required
               name="classes"
               value={form.classes}
               onChange={handleChange}
