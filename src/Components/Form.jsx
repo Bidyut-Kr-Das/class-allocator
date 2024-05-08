@@ -11,9 +11,18 @@ const Form = () => {
 
   // const [usedSlots, setUsedSlots] = useState([]);
 
-  const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
+  const [teachers, setTeachers] = useState([]);
   const slots = ["Slot 1", "Slot 2", "Slot 3"];
   const classes = ["Single Class", "Double Class", "Triple Class"];
+
+  useEffect(() => {
+    fetch("https://class-allocator-api.up.railway.app/api/v2/teachers/")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setTeachers(data.data);
+      });
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -48,8 +57,6 @@ const Form = () => {
     });
     // setUsedSlots([]);
   };
-
-  // Rest of your code...
 
   return (
     <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
@@ -87,8 +94,8 @@ const Form = () => {
             >
               <option value="">{"Select Teacher"}</option>
               {teachers.map((teacher, index) => (
-                <option key={index} value={teacher}>
-                  {teacher}
+                <option key={index} value={teacher._id}>
+                  {teacher.name}
                 </option>
               ))}
             </select>
