@@ -22,3 +22,7 @@ html {
 .yikes {
   font-family: yikes;
 }
+line {
+  stroke: rgb(136, 138, 140);
+  stroke-width: 2;
+}

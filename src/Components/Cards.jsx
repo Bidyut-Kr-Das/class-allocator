@@ -35,17 +35,23 @@ export default function Cards(props) {
             className[Math.floor(Math.random() * (max - min + 1) + min)]
           } h-32 w-32 z-0 flex absolute rounded-full top-[-75px] right-[-75px] transform group-hover:scale-150 duration-300`}
         ></div>
-        <div className="text-white px-4 py-6 flex flex-col gap-2 z-50 relative drop-shadow-md select-none">
-          <div className="font-black text-4xl tracking-widest BebasNeue  h-12 ">
+        <div className="text-white px-4 py-6 flex flex-col justify-center items-center gap-2 z-50 relative drop-shadow-md select-none h-full">
+          <div className="font-black text-4xl tracking-widest BebasNeue h-12 ">
             {props.batch}
           </div>
           <p className="font-poppins font-thin text-lg text-gray-400 group-hover:text-white">
             {props.teacherName}
           </p>
-          <p className="pt-8 BebasNeue text-xl tracking-widest">
-            Class Duration:{"  "}
+          <p className="pt-8 BebasNeue text-xl tracking-widest text-left w-full">
+            Start Time:{"   "}
             <span className="text-[#f9b234] font-bold group-hover:text-white">
-              {props.startTime} - {props.endTime}
+              {props.startTime}
+            </span>
+          </p>
+          <p className=" BebasNeue text-xl tracking-widest w-full text-left">
+            End Time:{"   "}
+            <span className="text-[#f9b234] font-bold group-hover:text-white">
+              {props.endTime}
             </span>
           </p>
         </div>

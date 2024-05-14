@@ -26,9 +26,9 @@ const Room = () => {
         const response = await axios.get(
           `https://class-allocator-api.up.railway.app/api/v2/classrooms/${floorNo}?room=${roomNo}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setClasses(response.data.classes);
-        console.log(classes);
+        // console.log(classes);
 
         setLoading(false);
       } catch (error) {
@@ -71,7 +71,7 @@ const Room = () => {
       </div>
       <div className="flex justify-center mx-auto relative">
         <TimeSlot />
-        <div className="ml-32 grid grid-rows-9 grid-cols-1 w-full px-4 gap-8 grid-flow-col">
+        <div className="ml-20 mt-6 grid grid-rows-9 grid-cols-1 w-full px-4 gap-5 grid-flow-col-dense">
           {classes.map((classCard, i) => {
             let tempClassname = "";
             let length = classCard.slots.length;
@@ -94,13 +94,13 @@ const Room = () => {
             );
           })}
           {/* Test case below */}
-          {/* <Cards
+          <Cards
             batch={"hello"}
             teacherName={"hello"}
             startTime={"hello"}
             endTime={"hello"}
             className="row-start-7 row-end-9"
-          /> */}
+          />
         </div>
       </div>
     </>
