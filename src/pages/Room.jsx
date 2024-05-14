@@ -41,6 +41,25 @@ const Room = () => {
   if (loading) {
     return <h1>Loading !</h1>;
   }
+  // const className = [
+  //   "row-start-1",
+  //   "row-start-2",
+  //   "row-start-3",
+  //   "row-start-4",
+  //   "row-start-5",
+  //   "row-start-6",
+  //   "row-start-7",
+  //   "row-start-8",
+  //   "row-start-9",
+  //   "row-end-2",
+  //   "row-end-3",
+  //   "row-end-4",
+  //   "row-end-5",
+  //   "row-end-6",
+  //   "row-end-7",
+  //   "row-end-8",
+  //   "row-end-9",
+  // ];
 
   return (
     <>
@@ -49,9 +68,18 @@ const Room = () => {
         <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
         <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
-      <div className="flex  justify-center  mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-4 gap-6">
+      <div className="flex justify-center  mx-auto">
+        <div className="grid grid-rows-9 grid-cols-1 w-full px-4 gap-6 grid-flow-col">
           {classes.map((classCard, i) => {
+            let tempClassname = "";
+            let length = classCard.slots.length;
+            if (length > 1) {
+              tempClassname = `row-start-${classCard.slots[0]} row-end-${
+                classCard.slots[length - 1] + 1
+              }`;
+            } else {
+              tempClassname = `row-start-${classCard.slots[0]}`;
+            }
             return (
               <Cards
                 key={i}
@@ -59,9 +87,18 @@ const Room = () => {
                 teacherName={classCard.teacher}
                 startTime={classCard.startTime}
                 endTime={classCard.endTime}
+                className={tempClassname}
               />
             );
           })}
+          {/* Test case below */}
+          {/* <Cards
+            batch={"hello"}
+            teacherName={"hello"}
+            startTime={"hello"}
+            endTime={"hello"}
+            className="row-start-7 row-end-9"
+          /> */}
         </div>
       </div>
     </>
