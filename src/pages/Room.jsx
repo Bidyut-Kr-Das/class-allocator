@@ -94,13 +94,13 @@ const Room = () => {
             );
           })}
           {/* Test case below */}
-          <Cards
+          {/* <Cards
             batch={"hello"}
             teacherName={"hello"}
             startTime={"hello"}
             endTime={"hello"}
             className="row-start-7 row-end-9"
-          />
+          /> */}
         </div>
       </div>
     </>
