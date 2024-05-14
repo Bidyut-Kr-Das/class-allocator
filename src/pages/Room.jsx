@@ -2,6 +2,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Cards from "../Components/Cards";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TimeSlot from "../Components/TimeSlot";
 
 const Room = () => {
   const params = useParams();
@@ -68,8 +69,9 @@ const Room = () => {
         <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
         <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
-      <div className="flex justify-center  mx-auto">
-        <div className="grid grid-rows-9 grid-cols-1 w-full px-4 gap-6 grid-flow-col">
+      <div className="flex justify-center mx-auto relative">
+        <TimeSlot />
+        <div className="ml-32 grid grid-rows-9 grid-cols-1 w-full px-4 gap-8 grid-flow-col">
           {classes.map((classCard, i) => {
             let tempClassname = "";
             let length = classCard.slots.length;
