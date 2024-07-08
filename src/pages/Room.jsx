@@ -24,7 +24,7 @@ const Room = () => {
         setLoading(true);
         setError(false);
         const response = await axios.get(
-          `https://class-allocator-api.up.railway.app/api/v2/classrooms/${floorNo}?room=${roomNo}`
+          `https://classallocator-production.up.railway.app/api/v2/classrooms/${floorNo}?room=${roomNo}`
         );
         // console.log(response.data);
         setClasses(response.data.classes);
@@ -36,31 +36,31 @@ const Room = () => {
       }
     })();
   }, []);
-  if (error) {
-    return <h1>Something went wrong!</h1>;
-  }
+  // if (error) {
+  //   return <h1>No Class is booked</h1>;
+  // }
   if (loading) {
-    return <h1>Loading !</h1>;
+    return <h1>Updating Classes!</h1>;
   }
-  // const className = [
-  //   "row-start-1",
-  //   "row-start-2",
-  //   "row-start-3",
-  //   "row-start-4",
-  //   "row-start-5",
-  //   "row-start-6",
-  //   "row-start-7",
-  //   "row-start-8",
-  //   "row-start-9",
-  //   "row-end-2",
-  //   "row-end-3",
-  //   "row-end-4",
-  //   "row-end-5",
-  //   "row-end-6",
-  //   "row-end-7",
-  //   "row-end-8",
-  //   "row-end-9",
-  // ];
+  const className = [
+    "row-start-1",
+    "row-start-2",
+    "row-start-3",
+    "row-start-4",
+    "row-start-5",
+    "row-start-6",
+    "row-start-7",
+    "row-start-8",
+    "row-start-9",
+    "row-end-2",
+    "row-end-3",
+    "row-end-4",
+    "row-end-5",
+    "row-end-6",
+    "row-end-7",
+    "row-end-8",
+    "row-end-9",
+  ];
 
   return (
     <>
@@ -69,6 +69,7 @@ const Room = () => {
         <span className="text-[#f9b234]">{floorNo}</span> <br /> Room No -
         <span className="text-[#f9b234]"> {roomNo}</span>
       </div>
+      {error && <h1>No Class is booked</h1>}
       <div className="flex justify-center mx-auto relative">
         <TimeSlot />
         <div className="ml-20 mt-6 grid grid-rows-9 grid-cols-1 w-full px-4 gap-5 grid-flow-col-dense">
