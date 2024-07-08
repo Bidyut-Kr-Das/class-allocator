@@ -6,7 +6,7 @@ const TimeSlot = () => {
   useEffect(() => {
     (async () => {
       const result = await axios.get(
-        "https://class-allocator-api.up.railway.app/api/v2/classrooms/slots"
+        "https://classallocator-production.up.railway.app/api/v2/classrooms/slots"
       );
       //   console.log(result.data);
       setStartTimes(result.data.startTime);
