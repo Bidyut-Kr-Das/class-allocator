@@ -26,7 +26,7 @@ const Form = () => {
   const classes = ["Single Class", "Double Class", "Triple Class"];
 
   useEffect(() => {
-    fetch("https://class-allocator-api.up.railway.app/api/v2/teachers/")
+    fetch("https://classallocator-production.up.railway.app/api/v2/teachers/")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
