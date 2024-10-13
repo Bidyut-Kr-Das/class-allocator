@@ -86,7 +86,7 @@ const Form = () => {
 
     axios
       .patch(
-        `https://class-allocator-api.up.railway.app/api/v2/classrooms/4?room=${formData.roomNumber}`,
+        `https://classallocator-production.up.railway.app/api/v2/classrooms/4?room=${formData.roomNumber}`,
         {
           batch: formData.batch,
           teacherId: formData.teacher,
